@@ -18,8 +18,8 @@ Technologies used:
 - JSON for data storage (planned)
 
 Main bugs faced during the process and how I solved them:
-1.
-2.
+1. 26 Oct 2025: The loop not ending for menu, added break to prevent endless loop
+2. 
 3.
 
 **Project development log:**
