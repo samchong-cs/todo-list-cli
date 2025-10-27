@@ -23,6 +23,7 @@ Main bugs faced during the process and how I solved them:
 3. 27 Oct 2025 : Users are not able to see the function to view their task list yet --> created and added the view_task function in the menu
 4. 27 Oct 2025 : Code for the menu section could be shortened to maximise readability and efficiency --> created a function menu-message to avoid repetition
 5. 27 Oct 2025 : Tasks did not a specific ID which could help perform the other functions in the program --> Changing the task lists from using list in Python to using dictionaries to add IDs more efficiently
+6. 27 Oct 2025 : Printing of the tasks list for the viewing function kept looping and add function appeared after the view function happened --> added break after calling the view_task function and also add_task function
 
 **Project development log:**
 Day 1 (26 October 2025):
