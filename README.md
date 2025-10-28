@@ -32,6 +32,9 @@ Created this repository in GitHub to document my first coding project. I roughly
 Day 2 (27 October 2025):
 Identified certain bugs / problems with the code and rectified them - listed in the list of bugs above as part of 27 October 2025 debugging. Added the function to view the tasks list by printing out the list saved.
 
+Day 3 (28 October 2025):
+Finding out how to create delete_task function due to increased complexity of indiviudals dictionaries in a list.
+
 Objective for this project: I want to make a highly functional command-line application which provides users a platform to be able to save their tasks seamlessly and be as user-friendly as possible to ensure they can manage tasks easily
 
 Future hopes for this project's advancement:
