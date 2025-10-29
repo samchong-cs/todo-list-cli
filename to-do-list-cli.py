@@ -45,6 +45,10 @@ def menu():
         elif task == 2:
             delete_task()
             break
+
+        elif task == 3:
+            edit_tasks()
+            break
         
         elif task == 5:
             view_tasks()
@@ -88,6 +92,7 @@ def add_task():
 def delete_task():
     print(task_list)
 
+    # Nothing in the list yet:
     if len(task_list) == 0:
         print("No tasks to delete!")
 
@@ -95,12 +100,32 @@ def delete_task():
 
     for task in task_list:
         if task["id"] ==  id_to_delete:
+            # Removes the task based on the id number:
             task_list.remove(task)
+
             print(f"Deleted task for ID {id_to_delete}")
             menu()
-            return
+            return # Exit loop after deleting
     
-    print("Task ID not found! Please retry!")
+    print("Task ID not found! Please retry!") # happens if ID is not found during the loop
+    menu()
+
+# Function 6:
+def edit_tasks():
+    print(task_list)
+    task_to_edit = int(input("Enter the ID of the task you want to edit: "))
+
+    for task in task_list:
+        if task["id"] == task_to_edit:
+            # Creating a new variable to enter updated task description:
+            updated_task = input("Enter a new task description: ")
+            # Changing the task description based on the variable above (user's input)
+            task["task"] = updated_task
+            print(f"Updated task is {updated_task} now.")
+            menu()
+            return # breaks the loop after editing
+
+    print("Task ID not found!")  # happens if ID is not found during the loop
     menu()
     
 # *Calling the menu function*:
