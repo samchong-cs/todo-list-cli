@@ -35,6 +35,9 @@ Identified certain bugs / problems with the code and rectified them - listed in 
 Day 3 (28 October 2025):
 Finding out how to create delete_task function due to increased complexity of indiviudals dictionaries in a list.
 
+Day 4 (29 October 2025):
+Successfully created the delete_task function and made the code for view_tasks function more robust. Created the edit_task function
+
 Objective for this project: I want to make a highly functional command-line application which provides users a platform to be able to save their tasks seamlessly and be as user-friendly as possible to ensure they can manage tasks easily
 
 Future hopes for this project's advancement:
