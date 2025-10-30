@@ -16,8 +16,13 @@ def view_tasks():
     
     print("\nYOUR TASKS:")
     for task in task_list:
-        print(f"[{task['id']}] {task['task']}")
+        if task["completed"]:
+            status = "✅"
+        else:
+            status = "○"
+        print(f"{status} [{task['id']}] {task['task']}")
     menu()
+    return
 
 # Function 2:
 def menu_message():
@@ -50,14 +55,13 @@ def menu():
             edit_tasks()
             break
         
+        elif task == 4:
+            mark_complete()
+
         elif task == 5:
             view_tasks()
             break
         
-        elif task != 6:
-            menu_message()
-            task = int(input("Enter the task number: "))
-
         else:
             print("You have successfully exited the application.")
             break
@@ -76,7 +80,7 @@ def add_task():
             break
         else:
             # Saving each task as a dictionary:
-            task = {"id" : next_id, "task" : task_input}
+            task = {"id" : next_id, "task" : task_input, "completed" : False}
 
             # Updating the dictionary to a list:
             task_list.append(task)
@@ -127,6 +131,27 @@ def edit_tasks():
 
     print("Task ID not found!")  # happens if ID is not found during the loop
     menu()
+
+# Function 7:
+def mark_complete():
+    if len(task_list) == 0:
+        print("No more tasks to complete")
+        menu()
+        return
+
+    print(task_list)
+
+    id_to_complete = int(input("Enter the task ID to mark complete: "))
+
+    for task in task_list:
+        if task["id"] == id_to_complete:
+            task["completed"] = True
+            print(f"Marked task {id_to_complete} as complete already!")
+            menu()
+            return
+
+    print("Task ID not found")
+    menu() 
     
 # *Calling the menu function*:
 menu()
