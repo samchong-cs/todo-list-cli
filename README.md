@@ -15,8 +15,7 @@ Planned features:
 
 Technologies used:
 - Python 3.8.7
-- JSON for data storage (planned)
-
+- JSON for data storage
 Main bugs faced during the process and how I solved them:
 1. 26 Oct 2025 : The loop not ending for menu --> added break to prevent endless loop
 2. 27 Oct 2025 : The word "DONE" appearing in the printed list after users completed entering their tasks --> add break after the if conditional where task_input is exactly the word "DONE"
@@ -24,7 +23,8 @@ Main bugs faced during the process and how I solved them:
 4. 27 Oct 2025 : Code for the menu section could be shortened to maximise readability and efficiency --> created a function menu-message to avoid repetition
 5. 27 Oct 2025 : Tasks did not a specific ID which could help perform the other functions in the program --> Changing the task lists from using list in Python to using dictionaries to add IDs more efficiently
 6. 27 Oct 2025 : Printing of the tasks list for the viewing function kept looping and add function appeared after the view function happened --> added break after calling the view_task function and also add_task function
-7. 30 Oct 2025 : The printing of the view function did not work when code changed to fit the new mark complete function --> changed from retreiving information to the dictionary 'task' instead of the list 'task_list'
+7. 30 Oct 2025 : The printing of the view function did not work when code changed to fit the new mark complete function --> changed from retreiving information to the dictionary 'task' instead of the list 'task_list' 
+8. 1 Nov 2025 : Added save task function after return which did not work --> placed it before
 
 **Project development log:**
 Day 1 (26 October 2025):
@@ -41,6 +41,9 @@ Successfully created the delete_task function and made the code for view_tasks f
 
 Day 5 (30 October 2025):
 Created the mark complete feature and presented the list with a status icon
+
+Day 6 (1 November 2025):
+Created JSON for storage
 
 Objective for this project: I want to make a highly functional command-line application which provides users a platform to be able to save their tasks seamlessly and be as user-friendly as possible to ensure they can manage tasks easily
 
