@@ -1,6 +1,30 @@
 # Created on 26 October 2025
 # Author: Samuel Chong
 
+import json
+import os
+def save_tasks():
+    with open("tasks.json", "w") as file:
+        json.dump(task_list, file, indent=2)
+
+def load_tasks():
+    global task_list, next_id
+    
+    # Check if file exists
+    if not os.path.exists("tasks.json"):
+        print("No saved tasks. Starting fresh!")
+        return
+    
+    # Load from file
+    with open("tasks.json", "r") as file:
+        task_list = json.load(file)
+    
+    # Set next_id
+    if task_list:
+        next_id = max(task["id"] for task in task_list) + 1
+    
+    print(f"Loaded {len(task_list)} tasks!")
+
 # *Variables needed for the add_task function:*
 task_list = []
 next_id = 1
@@ -90,6 +114,9 @@ def add_task():
     
     # Printing the dictionaries as a list
     print(f"\nThis is the tasks list you entered: {task_list}. You successfully finished entering tasks.")
+
+    print("Successfully added tasks!")
+    save_tasks()  # Save to file!
     menu()
 
 # Function 5:
@@ -108,6 +135,8 @@ def delete_task():
             task_list.remove(task)
 
             print(f"Deleted task for ID {id_to_delete}")
+
+            save_tasks()  # Save to file!
             menu()
             return # Exit loop after deleting
     
@@ -126,6 +155,7 @@ def edit_tasks():
             # Changing the task description based on the variable above (user's input)
             task["task"] = updated_task
             print(f"Updated task is {updated_task} now.")
+            save_tasks()
             menu()
             return # breaks the loop after editing
 
@@ -148,10 +178,12 @@ def mark_complete():
             task["completed"] = True
             print(f"Marked task {id_to_complete} as complete already!")
             menu()
+            save_tasks()
             return
 
     print("Task ID not found")
     menu() 
     
-# *Calling the menu function*:
+# *Calling the functions*:
+load_tasks()
 menu()
