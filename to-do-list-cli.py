@@ -28,14 +28,13 @@ def load_tasks():
 # *Variables needed for the add_task function:*
 task_list = []
 next_id = 1
-
+ 
 # *Created functions:*
 
 # Function 1:
 def view_tasks():
     if len(task_list) == 0:
         print("\nNo tasks yet!")
-        menu()
         return
     
     print("\nYOUR TASKS:")
@@ -45,7 +44,6 @@ def view_tasks():
         else:
             status = "○"
         print(f"{status} [{task['id']}] {task['task']}")
-    menu()
     return
 
 # Function 2:
@@ -60,35 +58,30 @@ def menu_message():
 
 # Function 3:
 def menu():
-    menu_message()
-    # Setting the variable for the task user selects:
-    task = int(input("Enter the task number from 1 to 6: "))
-
     # Looping the menu until user exits the application:
     while True:
+        menu_message()
+        # Setting the variable for the task user selects:
+        task = int(input("Enter the task number from 1 to 6: "))
         # Applying the add task function from above:
+        
         if task == 1:
             add_task()
-            break
 
         elif task == 2:
             delete_task()
-            break
 
         elif task == 3:
             edit_tasks()
-            break
         
         elif task == 4:
             mark_complete()
 
         elif task == 5:
             view_tasks()
-            break
         
         else:
             print("You have successfully exited the application.")
-            break
 
 # Function 4:
 def add_task():
@@ -117,15 +110,17 @@ def add_task():
 
     print("Successfully added tasks!")
     save_tasks()  # Save to file!
-    menu()
+    return
 
 # Function 5:
 def delete_task():
+    global task_list
     print(task_list)
 
     # Nothing in the list yet:
     if len(task_list) == 0:
         print("No tasks to delete!")
+        return
 
     id_to_delete = int(input("Enter the ID number of the task you want to delete: "))
 
@@ -137,14 +132,14 @@ def delete_task():
             print(f"Deleted task for ID {id_to_delete}")
 
             save_tasks()  # Save to file!
-            menu()
-            return # Exit loop after deleting
+            return
     
     print("Task ID not found! Please retry!") # happens if ID is not found during the loop
-    menu()
+    return
 
 # Function 6:
 def edit_tasks():
+    global task_list
     print(task_list)
     task_to_edit = int(input("Enter the ID of the task you want to edit: "))
 
@@ -156,17 +151,16 @@ def edit_tasks():
             task["task"] = updated_task
             print(f"Updated task is {updated_task} now.")
             save_tasks()
-            menu()
-            return # breaks the loop after editing
+            return
 
     print("Task ID not found!")  # happens if ID is not found during the loop
-    menu()
-
+    return
+    
 # Function 7:
 def mark_complete():
+    global task_list
     if len(task_list) == 0:
         print("No more tasks to complete")
-        menu()
         return
 
     print(task_list)
@@ -177,12 +171,11 @@ def mark_complete():
         if task["id"] == id_to_complete:
             task["completed"] = True
             print(f"Marked task {id_to_complete} as complete already!")
-            menu()
             save_tasks()
             return
 
     print("Task ID not found")
-    menu() 
+    return
     
 # *Calling the functions*:
 load_tasks()
